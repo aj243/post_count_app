@@ -2,7 +2,13 @@
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <%= link_to 'fetch data', users_path %>
+    <%= link_to 'fetch data', posts_path %>
+    <div
+		  class="fb-like"
+		  data-share="true"
+		  data-width="450"
+		  data-show-faces="true">
+		</div>
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>

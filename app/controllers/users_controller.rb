@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user_image = User.get_image(current_user)
+  	# @user_image = User.get_image(current_user)
+  	@user_post = User.get_posts(current_user)
+  	# binding.pry
   end
 
 end

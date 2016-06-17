@@ -1,0 +1,14 @@
+class CreatePosts < ActiveRecord::Migration
+  def change
+    create_table :posts do |t|
+      t.text :post_id
+      t.datetime :created_time
+      t.text :message
+      t.references :user, foreign_key: true
+
+      t.timestamps null: false
+    end
+
+    add_index :posts, :user_id
+  end
+end

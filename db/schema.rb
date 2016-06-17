@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616112215) do
+ActiveRecord::Schema.define(version: 20160617093646) do
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "post_id",      limit: 65535
+    t.datetime "created_time"
+    t.text     "message",      limit: 65535
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",         limit: 255
@@ -24,4 +35,5 @@ ActiveRecord::Schema.define(version: 20160616112215) do
     t.datetime "updated_at",                   null: false
   end
 
+  add_foreign_key "posts", "users"
 end
