@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160617093646) do
     t.string   "name",             limit: 255
     t.string   "oauth_token",      limit: 255
     t.datetime "oauth_expires_at"
-    t.integer  "post",             limit: 4
+    t.datetime "last_post_time"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end

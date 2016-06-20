@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
 
-  # get 'home/show'
-
   root 'users#index'
 
-  # get 'auth/facebook', as: "auth_provider"
-  # get 'auth/facebook/callback', to: 'users#login'
-  # get 'auth/failure', to: redirect('/')
-
+  get '/posts_update', to: 'posts#update'
   get '/posts', to: 'posts#create'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
@@ -16,9 +11,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   resource :users, only: [:show]
-  resource :posts, only: [:create]
+  resource :posts, only: [:create, :update]
 
-  # root  "home#show"
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web, at: '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

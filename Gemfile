@@ -1,7 +1,15 @@
 source 'https://rubygems.org'
 
+
+gem "sidekiq-cron", "~> 0.4.0"
+gem 'groupdate'
+gem "chartkick"
+gem 'sinatra', require: false
+gem 'slim'
+gem 'sidekiq'
 gem 'omniauth-facebook'
 gem "koala", "~> 2.2"
+
 
 gem 'pry'
 

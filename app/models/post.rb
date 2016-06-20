@@ -5,7 +5,6 @@ class Post < ActiveRecord::Base
 	def self.get_posts user 
 		facebook = Koala::Facebook::API.new(user.oauth_token)
 		user_posts = facebook.get_connections("me","posts")
-		# binding.pry
 	end
 
 	def self.get_next_posts user, next_page_params
@@ -13,5 +12,9 @@ class Post < ActiveRecord::Base
 		user_posts = facebook.get_page(next_page_params)
 	end
 
+	def self.update_next_posts user, time
+		facebook = Koala::Facebook::API.new(user.oauth_token)
+		user_posts = facebook.get_connections("me","posts",{since: time})
+	end
 
 end

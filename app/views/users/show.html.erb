@@ -1,1 +1,1 @@
-<%= image_tag @user_image['picture']['data']['url'] %>
+<%= line_chart @posts.group_by_month(:created_time).count %>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
 	has_many :posts
+	after_create :fetch_all_data
 
 	def self.get_image(user)
 		facebook = Koala::Facebook::API.new(user.oauth_token)
@@ -21,6 +22,12 @@ class User < ActiveRecord::Base
 	    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
 	    user.save
 	  end
+	end
+
+	private
+
+	def fetch_all_data
+		FacebookWorker.perform_async(self.id)
 	end
 
 end
