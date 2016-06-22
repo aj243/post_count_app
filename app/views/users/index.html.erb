@@ -4,6 +4,10 @@
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
     <br>
     <%= link_to 'Graph', users_path %>
+    <form>
+		  No. of posts pulled:<br>
+		  <input type="text" id="post_field" readonly>
+		</form>
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>

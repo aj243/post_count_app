@@ -113,6 +113,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.4.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -213,7 +214,9 @@ DEPENDENCIES
   mysql2 (>= 0.3.13, < 0.5)
   omniauth-facebook
   pry
+  puma
   rails (= 4.2.5.2)
+  redis
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq
