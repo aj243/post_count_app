@@ -1,6 +1,6 @@
 <div>
   <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
+    Signed in as <strong><%= current_user.name %></strong>
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
     <br>
     <%= link_to 'Graph', users_path %>

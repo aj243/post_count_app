@@ -2,17 +2,13 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  # get '/posts_update', to: 'posts#update'
-  # get '/posts', to: 'posts#create'
   get '/users/events', to: 'users#events'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'signout', to: 'sessions#destroy'
 
   resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
-  resource :users, only: [:show, :events]
-  # resource :posts, only: [:events]
+  resource :users, only: [:show]
 
   require 'sidekiq/web'
   require 'sidekiq/cron/web'

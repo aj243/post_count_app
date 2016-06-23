@@ -4,9 +4,9 @@ class ScheduledWorker
 
   def perform
     users = User.all
-    if !users.blank?
+    if users.present?
     	users.each do |user|
-        FacebookUpdateWorker.perform_async(user.id)
+        FacebookWorker.perform_async(user.id)
       end
     end
   end

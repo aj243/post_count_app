@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 		facebook.get_object("me?fields=picture")
 	end
 
-	def self.get_posts(user)
-		facebook = Koala::Facebook::API.new(user.oauth_token)
-		facebook.get_object("me?fields=posts.until(01/01/2015).since(01/03/2014)")
-	end
+	# def self.get_posts(user)
+	# 	facebook = Koala::Facebook::API.new(user.oauth_token)
+	# 	facebook.get_object("me?fields=posts.until(01/01/2015).since(01/03/2014)")
+	# end
 
   def self.from_omniauth(auth)
 	  where(auth.slice(provider: auth.provider, uid: auth.uid)).first_or_initialize.tap do |user|

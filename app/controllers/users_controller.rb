@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   def events
     response.headers["Content-Type"] = "text/event-stream"
-    redis = Redis.new
-    redis.subscribe("channel_#{current_user.id}") do |on|
+    $redis.subscribe("channel_#{current_user.id}") do |on|
     	on.message do |event, count|
 	      response.stream.write "data: #{count}\n\n"
 	    end
@@ -15,7 +14,6 @@ class UsersController < ApplicationController
   end
   
   def index
-        
   end
 
   def show
